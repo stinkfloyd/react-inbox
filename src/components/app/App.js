@@ -3,7 +3,7 @@ import './App.css';
 import Toolbar from '../toolbar/toolbar';
 import MessageList from '../messageList/messageList';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,7 +11,11 @@ class App extends Component {
     }
   }
 
-  async componentDidMount() {
+  starCallback = (value, id) => {
+
+  }
+
+  getMessages = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`)
     let resJson = await response.json()
 
@@ -22,14 +26,16 @@ class App extends Component {
     })
   }
 
+  componentDidMount = async () => {
+    await this.getMessages()
+  }
+
   render() {
     return (
       <div className="App">
         <Toolbar />
-        <MessageList messages={this.state.messages} />
+        <MessageList starCallback={this.starCallback} messages={this.state.messages} />
       </div>
     );
   }
 }
-
-export default App;
