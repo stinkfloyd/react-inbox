@@ -6,7 +6,8 @@ const MessageList = ({ messages }) => {
     return messages.map((message, idx) => {
         let read = message.read ? "read" : "unread"
         let selected = message.selected ? "selected" : "unselected"
-        let labels = [...message.labels]
+        let starred = message.starred ? "fa-star" : "fa-star-o"
+
         return (
             <div className={`row message ${read} ${selected}`} key={idx}>
                 <div className="col-xs-1">
@@ -15,13 +16,13 @@ const MessageList = ({ messages }) => {
                             <input type="checkbox" checked={message.selected} />
                         </div>
                         <div className="col-xs-2">
-                            <i className="star fa fa-star-o"></i>
+                            <i className={`star fa ${starred}`}></i>
                         </div>
                     </div>
                 </div>
                 <div className="col-xs-11">
                     <div>
-                        <Labels labels={labels} className="label label-warning" />
+                        <Labels labels={message.labels} className="label label-warning" />
                         {message.subject}
                     </div>
                 </div>
