@@ -13,7 +13,7 @@ export default class App extends Component {
     }
   }
 
-  request = async (path, method = 'GET', body = null) => {
+  request = async (method = 'GET', body = null) => {
     if (body) body = JSON.stringify(body)
     return await fetch(process.env.REACT_APP_API_URL, {
       method: method,
