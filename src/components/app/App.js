@@ -39,7 +39,7 @@ export default class App extends Component {
   }
 
   updateMessages = async (payload) => {
-    await this.request(process.env.REACT_APP_API_URL, 'PATCH', payload)
+    await this.request('PATCH', payload)
   }
 
   toggleMessageProperty = (message, property) => {
@@ -158,7 +158,7 @@ export default class App extends Component {
   }
 
   sendMessage = async (message) => {
-    const response = await this.request('/api/messages', 'POST', {
+    const response = await this.request('POST', {
       subject: message.subject,
       body: message.body,
     })
