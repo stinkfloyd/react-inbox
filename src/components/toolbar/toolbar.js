@@ -42,6 +42,10 @@ const Toolbar = ({ messages, toggleSelectAll, toggleCompose, markAsRead, markAsU
           Mark As Unread
         </button>
 
+        <button className="btn btn-default" onClick={deleteMessages} disabled={selectedCount === 0}>
+          <i className="fa fa-trash-o"></i>
+        </button>
+
         <select
           className="form-control label-select"
           disabled={selectedCount === 0}
@@ -53,20 +57,14 @@ const Toolbar = ({ messages, toggleSelectAll, toggleCompose, markAsRead, markAsU
           <option value="gschool">gschool</option>
         </select>
 
-        <select
-          className="form-control label-select"
-          disabled={selectedCount === 0}
-          onChange={(e) => { removeLabel(e.target.value); e.target.selectedIndex = 0 }}
-        >
+        <select className="form-control label-select" disabled={selectedCount === 0} onChange={(e) => { removeLabel(e.target.value); e.target.selectedIndex = 0 }}>
           <option>Remove label</option>
           <option value="dev">dev</option>
           <option value="personal">personal</option>
           <option value="gschool">gschool</option>
         </select>
 
-        <button className="btn btn-default" onClick={deleteMessages} disabled={selectedCount === 0}>
-          <i className="fa fa-trash-o"></i>
-        </button>
+
       </div>
     </div>
   )

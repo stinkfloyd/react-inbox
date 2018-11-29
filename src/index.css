@@ -67,6 +67,7 @@ code {
 
 .toolbar .label-select {
   width: auto;
+  height: 34px;
   display: inline;
 }
 
